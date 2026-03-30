@@ -1,0 +1,7 @@
+waybar
+waypaper
+swaync
+mango
+nvim
+
+

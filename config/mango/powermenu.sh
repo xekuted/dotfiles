@@ -1,23 +1,25 @@
 #!/bin/bash
 
-# Define the options with icons
-options="󰐥 Shutdown\n󰜉 Reboot\n󰤄 Suspend\n󰈆 Logout"
+# Define options
+options="󰐥 Shutdown
+󰜉 Reboot
+󰤄 Suspend
+󰈆 Logout"
 
-# Run wofi and strip icons/extra spaces to get just the word
-choice=$(echo -e "$options" | wofi --dmenu --prompt "Power Menu" | sed 's/.* //')
+# Show rofi menu
+choice=$(echo -e "$options" | rofi -dmenu -p "Power Menu")
 
-case $choice in
-Shutdown)
+case "$choice" in
+*"Shutdown")
   systemctl poweroff
   ;;
-Reboot)
+*"Reboot")
   systemctl reboot
   ;;
-Suspend)
+*"Suspend")
   swaylock -f -i ~/Pictures/Wallpapers/wallpaper.jpg && systemctl suspend
   ;;
-Logout)
-  # Using the standard pkill to ensure it exits MangoWC
+*"Logout")
   pkill mango
   ;;
 *)
