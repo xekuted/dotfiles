@@ -1,0 +1,32 @@
+[bar]
+size = 27
+background_opacity = 0.0
+position = "top"
+
+[widgets]
+left = ["workspaces", "media"]
+center = ["clock"]
+right = ["custom-layout",{ group = ["memory","updates","network_speed"]} ,"tray",{group=["battery","quick_settings"]}]
+background_opacity = 1.0
+
+[theme]
+mode = "dark"
+accent = "#adabe0"
+
+[theme.icons]
+theme = "material"
+
+[widgets.network_speed]
+format="dl"
+show_arrows=false
+
+[widgets.memory]
+format="absolute"
+
+[widgets.quick_settings]
+vpn=false
+
+[widgets.custom-layout]
+icon = "󰕰"                    # ← Try this first
+tooltip = "Mango Layout Switcher"
+on_click = "qs -c ~/.config/quickshell/mango-layout-switcher"

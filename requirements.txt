@@ -3,5 +3,6 @@ waypaper
 swaync
 mango
 nvim
-
-
+vibepanel
+wswitch
+mango-layout-switcher
