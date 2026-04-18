@@ -6,3 +6,5 @@ nvim
 vibepanel
 wswitch
 mango-layout-switcher
+zoxide
+zsh
