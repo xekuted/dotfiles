@@ -8,3 +8,6 @@ wswitch
 mango-layout-switcher
 zoxide
 zsh
+yazi
+wezterm
+rofi
