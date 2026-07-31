@@ -1,7 +1,7 @@
 waypaper
 swaync
 mango
-nvim
+helix
 vibepanel
 wswitch
 mango-layout-switcher
