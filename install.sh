@@ -7,41 +7,41 @@ sudo dnf update -y
 
 echo "=== Installing core packages ==="
 sudo dnf install -y \
-  waybar \
   swaync \
-  neovim \
+  helix \
+  kitty \
+  loupe \
+  nwg-look \
+  adw-gtk3-theme \
   zoxide \
   zsh \
   yazi \
-  rofi \
-  base-devel
+  rofi
 
-echo "=== Adding Terra repo + installing MangoWM ==="
+echo "=== Adding Terra repo + installing MangoWM, vibepanel, quickshell and Obsidian (all from Terra) ==="
 sudo dnf install --nogpgcheck --repofrompath 'terra,https://repos.fyralabs.com/terra$releasever' terra-release -y
-sudo dnf install -y mangowm
+sudo dnf install -y mangowm vibepanel quickshell obsidian
 
-echo "=== Adding COPR repos ==="
+echo "=== Adding waypaper from COPR ==="
 sudo dnf copr enable -y solopasha/hyprland
-sudo dnf copr enable -y prankstr/vibepanel
+sudo dnf install -y waypaper
 
-echo "=== Installing waypaper and vibepanel (quickshell comes as dependency) ==="
-sudo dnf install -y waypaper vibepanel
+echo "=== Installing Brave (brave-origin from the official Brave RPM repo) ==="
+sudo rpm --import https://brave-browser-rpm-release.s3.brave.com/brave-core.asc
+sudo tee /etc/yum.repos.d/brave-browser.repo >/dev/null <<'EOF'
+[brave-browser]
+name=Brave Browser
+enabled=1
+gpgcheck=1
+gpgkey=https://brave-browser-rpm-release.s3.brave.com/brave-core.asc
+baseurl=https://brave-browser-rpm-release.s3.brave.com/$basearch
+EOF
+sudo dnf install -y brave-origin
 
 echo "=== Installing Flatpaks in one clean command ==="
 flatpak install -y flathub \
-  com.brave.Browser \
-  org.wezfurlong.wezterm \
   it.mijorus.gearlever \
-  com.stremio.Stremio \
-  dev.vencord.Vesktop \
-  md.obsidian.Obsidian
-
-echo "=== Installing wswitch (the only thing that needs compiling) ==="
-git clone https://github.com/DreamMaoMao/wswitch.git /tmp/wswitch
-cd /tmp/wswitch
-makepkg -si --noconfirm
-cd -
-rm -rf /tmp/wswitch
+  com.stremio.Stremio
 
 echo "=== Installing mango-layout-switcher (Quickshell QML panel) ==="
 mkdir -p ~/.config/quickshell
@@ -54,12 +54,11 @@ if [ -d "$DOTFILES_CONFIG/config" ]; then
   rsync -av --ignore-existing "$DOTFILES_CONFIG/config/" ~/.config/
 fi
 
-echo "=== Moving workflow.sh to ~/.local/bin and making it executable ==="
-mkdir -p ~/.local/bin
+echo "=== Copying wallpapers to ~/Pictures/Wallpapers (configs reference these) ==="
 DOTFILES_DIR="$(dirname "$(realpath "$0")")"
-if [ -f "$DOTFILES_DIR/workflow.sh" ]; then
-  cp "$DOTFILES_DIR/workflow.sh" ~/.local/bin/
-  chmod +x ~/.local/bin/workflow.sh
+if [ -d "$DOTFILES_DIR/Wallpapers" ]; then
+  mkdir -p ~/Pictures
+  rsync -a "$DOTFILES_DIR/Wallpapers/" ~/Pictures/Wallpapers/
 fi
 
 echo "=== Setting zsh as default shell because you're too lazy ==="

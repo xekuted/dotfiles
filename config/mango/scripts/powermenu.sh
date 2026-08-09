@@ -17,7 +17,7 @@ case "$choice" in
   systemctl reboot
   ;;
 *"Suspend")
-  swaylock -f -i ~/Pictures/Wallpapers/wallpaper.jpg && systemctl suspend
+  ~/.config/mango/scripts/suspend.sh
   ;;
 *"Logout")
   pkill mango

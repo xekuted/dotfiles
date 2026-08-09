@@ -65,35 +65,27 @@
                 },
                 {
                     "label": "󰌾",
-                    "command": "$HOME/.config/hypr/scripts/lock-session.sh"
+                    "command": "swaylock -f -i /home/xeke/Pictures/Wallpapers/minimalistic/light/chinese-hills.jpg"
                 },
                 {
                     "label": "󰍃",
-                    "command": "hyprctl dispatch exit"
+                    "command": "pkill mango"
                 },
                 {
                     "label": "󰤄",
-                    "command": "systemctl suspend"
+                    "command": "$HOME/.config/mango/scripts/suspend.sh"
                 },
                 {
                     "label": "󰕾",
-                    "command": "swayosd-client --output-volume mute-toggle"
+                    "command": "wpctl set-mute @DEFAULT_SINK@ toggle"
                 },
                 {
                     "label": "󰍬",
-                    "command": "swayosd-client --input-volume mute-toggle"
+                    "command": "wpctl set-mute @DEFAULT_SOURCE@ toggle"
                 },
                 {
                     "label": "󰖩",
-                    "command": "$HOME/.local/bin/shved/rofi-menus/wifi-menu.sh"
-                },
-                {
-                    "label": "󰂯",
-                    "command": "blueman-manager"
-                },
-                {
-                    "label": "",
-                    "command": "obs"
+                    "command": "$HOME/.config/mango/scripts/wifi.sh"
                 }
             ]
         }

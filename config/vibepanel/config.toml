@@ -27,6 +27,6 @@ format="absolute"
 vpn=false
 
 [widgets.custom-layout]
-icon = "󰕰"                    # ← Try this first
+icon = "󰕰"
 tooltip = "Mango Layout Switcher"
 on_click = "qs -c ~/.config/quickshell/mango-layout-switcher"

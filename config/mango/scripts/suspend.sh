@@ -1,4 +1,4 @@
 #!/bin/sh
-swaylock --clock -f -i '/home/xek/dotfiles/Wallpapers/anime/light/vagabond.jpg'
+swaylock -f -i '/home/xeke/Pictures/Wallpapers/minimalistic/light/chinese-hills.jpg' --indicator-radius 100 --indicator-thickness 7 --ring-color bb9af7 --key-hl-color 7aa2f7
 sleep 0.5
 systemctl suspend
