@@ -1,3 +1,5 @@
+export PATH="/usr/bin:$PATH"
+export PATH="$HOME/.npm-global/bin:$PATH"
 # ─────────────────────────────
 # PATH
 # ─────────────────────────────
@@ -30,23 +32,23 @@ eval "$(oh-my-posh init zsh --config ~/.poshthemes/uew.omp.json)"
 # ─────────────────────────────
 # USER SETTINGS
 # ─────────────────────────────
-export EDITOR="nvim"
+export EDITOR="zed"
 
 if [[ -n $SSH_CONNECTION ]]; then
-  export EDITOR="nvim"
+  export EDITOR="zed"
 else
-  export EDITOR="vim"
+  export EDITOR="hx"
 fi
 
 # ─────────────────────────────
 # ALIASES
 # ─────────────────────────────
-alias n="nvim"
+alias h="hx"
 alias fp="flatpak"
 alias j="jrnl"
 alias oc="opencode"
 alias oy="./ody.sh"
-
+alias yz="yazi"
 # Zoxide init
 #
 # shellcheck shell=bash
@@ -204,6 +206,16 @@ bashcompinit
 source "/home/xek/.local/share/bash-completion/completions/am"
 export XDG_DATA_DIRS=/var/lib/flatpak/exports/share:/home/$USER/.local/share/flatpak/exports/share:$XDG_DATA_DIRS
 
+fpath+=~/.zfunc; autoload -Uz compinit; compinit
+
+zstyle ':completion:*' menu select
+
+# >>> grok installer >>>
+export PATH="$HOME/.grok/bin:$PATH"
+fpath=(~/.grok/completions/zsh $fpath)
+autoload -Uz compinit && compinit -C
+# <<< grok installer <<<
+
 # opencode
 export PATH=/home/xek/.opencode/bin:$PATH
-export PATH="$HOME/.opencode/bin:$PATH"
+export EDITOR=zed
