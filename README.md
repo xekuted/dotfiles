@@ -26,12 +26,13 @@ cd dotfiles
 2. **Installs core packages** — `swaync`, `helix`, `kitty`, `loupe`, `nwg-look`, `adw-gtk3-theme`, `zoxide`, `zsh`, `yazi`, `rofi`
 3. **Sets up MangoWM from Terra** — adds the Terra repo, then installs `mangowm`, `vibepanel`, `quickshell` and `obsidian` (all from Terra)
 4. **Installs waypaper** from the `solopasha/hyprland` COPR for wallpaper management
-5. **Installs Brave** — `brave-origin` from the official Brave RPM repo (repo file + GPG key added first)
-6. **Installs Flatpaks** — Gear Lever, Stremio
-7. **Clones mango-layout-switcher** (quickshell QML layout switcher) into `~/.config/quickshell`
-8. **Copies the configs** — rsyncs `config/` into `~/.config/` with `--ignore-existing`
-9. **Copies the wallpapers** — rsyncs `Wallpapers/` into `~/Pictures/Wallpapers/` (every config references this path)
-10. **Sets zsh as the default shell** — `chsh -s "$(which zsh)"`
+5. **Installs oh-my-posh** via the official installer and copies the `uew` theme to `~/.poshthemes`
+6. **Installs Brave** — `brave-origin` from the official Brave RPM repo (repo file + GPG key added first)
+7. **Installs Flatpaks** — Gear Lever, Stremio
+8. **Clones mango-layout-switcher** (quickshell QML layout switcher) into `~/.config/quickshell`
+9. **Copies the configs** — rsyncs `config/` into `~/.config/` with `--ignore-existing`
+10. **Copies the wallpapers** — rsyncs `Wallpapers/` into `~/Pictures/Wallpapers/` (every config references this path)
+11. **Sets zsh as the default shell** — `chsh -s "$(which zsh)"`
 
 ## Features
 
@@ -41,6 +42,7 @@ cd dotfiles
 - **Kitty** terminal with a Gruvbox / CaskaydiaCove Nerd Font theme; `Alt+t` opens it.
 - **Dark theme via nwg-look** — ships the *Adwaita* GTK theme (`adw-gtk3-dark`) with `gtk-3.0/settings.ini` + `gtk-4.0/settings.ini` already exported, so GTK apps start dark. Re-apply or tweak with `nwg-look` (or `nwg-look -a` to re-export from disk).
 - **Zsh** + **zoxide** + **yazi** — fast navigation and file browsing in the terminal (`h` alias).
+- **oh-my-posh prompt** — the official **uew** theme (session / git / shell on top, `path` below, exec-time + clock on the right).
 - **Loupe / Flameshot** for viewing and screenshotting; screenshots save to `~/Pictures`.
 - **Rofi** launcher and power menu (`Alt+d` menu, `Alt+F4` power menu).
 - **Swaylock** lock screen using `Wallpapers/minimalistic/light/chinese-hills.jpg` — used by the idle handler, the suspend script and the swaync lock button.
@@ -61,6 +63,7 @@ dotfiles/
 ├── install.sh            # one-command setup script
 ├── requirements.txt      # package list
 ├── zshrc                 # shell config (install as ~/.zshrc)
+├── poshthemes/           # oh-my-posh prompt theme (uew.omp.json)
 ├── config/               # per-app configs, rsynced into ~/.config/
 │   ├── mango/            # MangoWM config + scripts
 │   ├── swaync/           # notifications + quick settings

@@ -26,6 +26,9 @@ echo "=== Adding waypaper from COPR ==="
 sudo dnf copr enable -y solopasha/hyprland
 sudo dnf install -y waypaper
 
+echo "=== Installing oh-my-posh (prompt theme engine) ==="
+command -v oh-my-posh >/dev/null 2>&1 || curl -s https://ohmyposh.dev/install.sh | bash -s
+
 echo "=== Installing Brave (brave-origin from the official Brave RPM repo) ==="
 sudo rpm --import https://brave-browser-rpm-release.s3.brave.com/brave-core.asc
 sudo tee /etc/yum.repos.d/brave-browser.repo >/dev/null <<'EOF'
@@ -46,6 +49,13 @@ flatpak install -y flathub \
 echo "=== Installing mango-layout-switcher (Quickshell QML panel) ==="
 mkdir -p ~/.config/quickshell
 git clone https://github.com/atheeq-rhxn/mango-layout-switcher.git ~/.config/quickshell/mango-layout-switcher
+
+echo "=== Copying oh-my-posh theme (uew) to ~/.poshthemes ==="
+DOTFILES_THEME="$(dirname "$(realpath "$0")")"
+if [ -f "$DOTFILES_THEME/poshthemes/uew.omp.json" ]; then
+  mkdir -p ~/.poshthemes
+  cp "$DOTFILES_THEME/poshthemes/uew.omp.json" ~/.poshthemes/uew.omp.json
+fi
 
 echo "=== Copying configs from dotfiles/config to ~/.config ==="
 DOTFILES_CONFIG="$(dirname "$(realpath "$0")")"

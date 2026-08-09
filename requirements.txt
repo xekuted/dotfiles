@@ -16,4 +16,5 @@ zoxide
 zsh
 yazi
 rofi
+oh-my-posh
 gearlever
