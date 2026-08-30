@@ -9,6 +9,7 @@ echo "=== Installing core packages ==="
 sudo dnf install -y \
   swaync \
   helix \
+  jq \
   kitty \
   loupe \
   nwg-look \
