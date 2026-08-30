@@ -1,3 +1,8 @@
+![Desktop image](desktop.png)
+
+
+
+
 # dotfiles
 
 Personal dotfiles for **Fedora Linux** running the **MangoWM** compositor (Wayland).
