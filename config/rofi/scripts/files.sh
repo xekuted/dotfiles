@@ -1,10 +1,6 @@
 #!/usr/bin/env bash
 
-# Permanent Rofi file finder mode
-# Type to fuzzy-search files under $HOME, Enter opens them
-
 if [ -z "$@" ]; then
-    # First call: list files
     fd --type f --hidden \
        --exclude .git \
        --exclude node_modules \
@@ -13,6 +9,17 @@ if [ -z "$@" ]; then
        --exclude .local/share/Trash \
        . "$HOME" 2>/dev/null
 else
-    # User selected something → open it
-    xdg-open "$@" >/dev/null 2>&1 &
+    file="$@"
+
+    case "${file,,}" in
+        *.txt|*.md|*.conf|*.rasi|*.toml|*.yaml|*.yml|*.json|*.sh|*.bash|*.zsh|*.py|*.js|*.ts|*.rs|*.go|*.c|*.h|*.cpp|*.hpp|*.css|*.html|*.xml|*.ini|*.cfg|*.env|*.log|*.desktop)
+            kitty -e hx "$file" >/dev/null 2>&1 &
+            ;;
+        *)
+            xdg-open "$file" >/dev/null 2>&1 &
+            ;;
+    esac
+
+    # Force Rofi to close
+    exit 0
 fi
