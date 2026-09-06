@@ -99,6 +99,8 @@ EOF
 }
 
 step_flatpaks() {
+  flatpak remote-add --if-not-exists --system flathub \
+    https://dl.flathub.org/repo/flathub.flatpakrepo
   flatpak install -y flathub \
     it.mijorus.gearlever \
     com.stremio.Stremio
@@ -176,6 +178,14 @@ WIFI_USER=${wuser}
 WIFI_PASS=${wpass}
 EOF
   chmod 600 ~/.config/wifi.env
+
+  if [ -z "$wuser" ] || [ -z "$wpass" ]; then
+    echo ""
+    echo "WARNING: WIFI_USER and/or WIFI_PASS are empty."
+    echo "No env vars were set and no interactive input was received."
+    echo "Edit ~/.config/wifi.env, then re-run: python3 ~/wifi.py"
+    return 1
+  fi
 }
 
 run_step "Copying oh-my-posh theme (uew)" step_poshthemes

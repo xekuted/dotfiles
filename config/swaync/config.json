@@ -65,7 +65,7 @@
                 },
                 {
                     "label": "󰌾",
-                    "command": "swaylock -f -i /home/xeke/Pictures/Wallpapers/minimalistic/light/chinese-hills.jpg"
+                    "command": "swaylock -f -i ~/Pictures/Wallpapers/minimalistic/light/chinese-hills.jpg"
                 },
                 {
                     "label": "󰍃",
