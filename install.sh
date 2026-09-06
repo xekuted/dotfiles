@@ -147,16 +147,35 @@ step_wifi() {
     cp "$DOTFILES_DIR/wifi.py" ~/wifi.py
     chmod +x ~/wifi.py
   fi
-  if [ ! -f ~/.config/wifi.env ]; then
-    mkdir -p ~/.config
-    cat > ~/.config/wifi.env <<'EOF'
-# Wi-Fi (Sophos captive portal) credentials — wifi.codelif.in
-# Fill these in; this file is yours, read-only and never committed.
-WIFI_USER=your_username
-WIFI_PASS=your_password
-EOF
-    chmod 600 ~/.config/wifi.env
+
+  if [ -f ~/.config/wifi.env ]; then
+    echo "wifi.env already present at ~/.config/wifi.env — keeping existing credentials"
+    return 0
   fi
+
+  mkdir -p ~/.config
+
+  # Prefer env-var overrides (scriptable), otherwise prompt interactively.
+  local wuser wpass
+  wuser="${WIFI_USER:-}"
+  wpass="${WIFI_PASS:-}"
+
+  if [ -z "$wuser" ]; then
+    read -r -p "Wi-Fi credentials are stored in ~/.config/wifi.env (never committed).
+  WIFI_USER: " wuser
+  fi
+  if [ -z "$wpass" ]; then
+    read -r -s -p "WIFI_PASS: " wpass
+    echo ""
+  fi
+
+  cat > ~/.config/wifi.env <<EOF
+# Wi-Fi (Sophos captive portal) credentials — wifi.codelif.in
+# This file belongs to this machine only; it is never committed.
+WIFI_USER=${wuser}
+WIFI_PASS=${wpass}
+EOF
+  chmod 600 ~/.config/wifi.env
 }
 
 run_step "Copying oh-my-posh theme (uew)" step_poshthemes
