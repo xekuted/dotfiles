@@ -8,6 +8,7 @@ sudo dnf update -y
 echo "=== Installing core packages ==="
 sudo dnf install -y \
   swaync \
+  fd-find \
   helix \
   jq \
   kitty \

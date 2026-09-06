@@ -1,6 +1,8 @@
+configuration {
+    modes: "window,drun,run,files";
+    matching: "normal";
+}
+
+files: "~/.config/rofi/scripts/files.sh"
 
 @theme "/usr/share/rofi/themes/gruvbox-dark-hard.rasi"
-
-configuration {
-    modi: "drun,filebrowser,window";
-}

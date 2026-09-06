@@ -17,4 +17,5 @@ zsh
 yazi
 rofi
 oh-my-posh
+fd-find
 gearlever
