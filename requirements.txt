@@ -19,3 +19,14 @@ rofi
 oh-my-posh
 fd-find
 gearlever
+stremio
+swaylock
+swayidle
+brightnessctl
+awww
+thunar
+thunar-archive-plugin
+xarchiver
+python3-requests
+wswitch
+yaru-ext-dark-purple-icons
